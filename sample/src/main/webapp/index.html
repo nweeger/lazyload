@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+  <head>
+    <title>gLazyLoad plugin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="glazyload.css" type="text/css" />
+    <script src="LazyLoad/LazyLoad.nocache.js"></script>
+  </head>
+  <body>
+     <h1>What is this about?</h1>
+     <p>gLazyLoad is a <a class="external" href="http://code.google.com/p/gwtquery/">GwtQuery</a> <a class="external" href="http://code.google.com/p/gwtquery-plugins/">plugin</a> to lazily load pictures on a webpage.</p>
+     <p>Instead of pictures being loaded with the page, they are only loaded when the user actually sees them.</p>
+     <p>This makes the page load faster for the user, and saves bandwidth on the server side.</p>
+     <p>This plugin is the GwtQuery equivalent of the jQuery <a class="external" href="http://www.appelsiini.net/projects/lazyload">LazyLoad</a> plugin.</p>
+
+     <h1>How to use it</h1>
+     <p>Get the <a href="#releases">latest release</a>, and add it to your project (the actual method depends on your IDE), which must already be using GwtQuery.</p>
+     <p>In your HTML code, replace the <code>src</code> attribute of your images with the <code>data-original</code> tag, add a <code>lazy</code> class.</p>
+     <p>Using a CSS rule or an inline style, make sure the pictures are correctly sized (using <code>width:</code> and <code>height:</code>), else the plugin may fail to work.
+     <p>Import the package <code>import static gwtquery.plugins.lazyload.client.LazyLoad.LazyLoad;</code> in your Java code, then use <code>$("img.lazy").as(LazyLoad).lazyload()</code> to have pictures load lazily.</p>
+     <h1>Example</h1>
+     <p>In your HTML, put:</p>
+     <code>
+       &lt;img alt="picture" data-original="big-picture.png" style="width: 800px; height: 600px;" /&gt;
+     </code>
+     <p>and in your Java code add, for instance in your module EntryPoint:</p>
+     <code>$("img").as(LazyLoad).lazyload();</code>
+     <p>When the page initially loads, the picture will be a blank rectangle. When the picture scrolls into view, the picture will be automatically loaded.</p>
+     <p>Detailed explanation:</p>
+     <ul>
+       <li>the picture has a dimension of 800 pixels by 600, so we use a <code>style="..."</code> statement so the browser reserves space for the picture</li>
+       <li><code>$("img")</code> selects all the pictures</li>
+       <li><code>.as(LazyLoad)</code> converts the GwtQuery items to a LazyLoad plugin</li>
+       <li><code>.lazyload()</code> applies lazy loading on the items with default parameters</li>
+     </ul>
+
+     <h1>Customizing</h1>
+     <p>You may of course use any CSS class (rather than <code>lazy</code>) to refer to your pictures, or any other method, as long as you can get a GwtQuery instance on them.</p>
+     <p>You can customize the behaviour of the plugin by creating an instance of the <a class="external" href="http://nekoko.fr/lazyload/apidocs/index.html?gwtquery/plugins/lazyload/client/Options.html"><code>Options</code></a> class, calling the various setters, and giving it as a parameter to the <code>.lazyload()</code> function call.</p>
+     <p>In particular, you can specify:</p>
+     <ul>
+       <li>the <a class="external" href="http://nekoko.fr/lazyload/apidocs/gwtquery/plugins/lazyload/client/Options.html#setEffect(com.google.gwt.query.client.Function)">effect to apply</a> to the picture when it is shown</li>
+       <li>the <a class="external" href="http://nekoko.fr/lazyload/apidocs/gwtquery/plugins/lazyload/client/Options.html#setPlaceholder(java.lang.String)">placeholder</a> to use before the picture is loaded</li>
+       <li>the <a class="external" href="http://nekoko.fr/lazyload/apidocs/gwtquery/plugins/lazyload/client/Options.html#setContainer(com.google.gwt.query.client.GQuery)">container</a> the pictures are in, defaults to the whole client window</li>
+     </ul>
+
+     <h1>Available samples for gLazyLoad:</h1>
+     <ul>
+       <li><a href="vertical-scroll.html">vertical scrolling</a></li>
+       <li><a href="horizontal-scroll.html">horizontal scrolling</a></li>
+       <li><a href="fade.html">fade in effect</a></li>
+       <li><a href="container-vertical.html">vertical container</a></li>
+       <li><a href="container-horizontal.html">horizontal container</a></li>
+     </ul>
+
+     <h1>Documentation</h1>
+     <p>The Javadocs for the plugin may be found <a class="external" href="http://nekoko.fr/lazyload/apidocs/">here</a>.</p>
+
+     <h1>Source</h1>
+     <p>The source is available on Github, at <a class="external" href="https://github.com/nweeger/lazyload">https://github.com/nweeger/lazyload</a>.</p>
+
+     <h1 id="releases">Releases</h1>
+     <p>The current version is <code>1.0-SNAPSHOT</code>:</p>
+     <ul>
+       <li><a href="lazyload-plugin-1.0-SNAPSHOT.jar">jar containing the built classes and the source</a></li>
+       <li><a href="lazyload-plugin-1.0-SNAPSHOT-javadoc.jar">Javadocs</a></li>
+     </ul>
+
+     <h1>License</h1>
+     <p>This code is licensed under the Apache 2.0 license:</p>
+     <pre class="license">
+   Copyright 2014 Nekoko SARL.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       <a class="external" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+     </pre>
+     <h1>Pictures license</h1>
+     <p>All pictures in the samples are from <a href="http://commons.wikimedia.org">Wikimedia Commons</a>:</p>
+     <ul>
+       <li>
+         <a class="external" href="https://commons.wikimedia.org/wiki/File:WLM_-_23dingenvoormusea_-_Haarlemmerpoort_Amsterdam_gezien_vanuit_het_oosten.jpg">WLM - 23dingenvoormusea - Haarlemmerpoort Amsterdam gezien vanuit het oosten</a>,
+         <a class="external" href="https://creativecommons.org/licenses/by-sa/2.0/deed.en">Creative Commons Attribution-Share Alike 2.0 Generic</a>,
+         by <a class="external" href="http://www.flickr.com/photos/34397565@N06">23 dingen voor musea</a>
+       </li>
+       <li>
+         <a class="external" href="https://commons.wikimedia.org/wiki/File:Voorgevel_-_Beets_-_20030000_-_RCE.jpg">Voorgevel - Beets - 20030000 - RCE</a>,
+         <a class="external" href="https://creativecommons.org/licenses/by-sa/3.0/nl/deed.en">Creative Commons Attribution-Share Alike 3.0 Netherlands</a>,
+         by Bouma
+       </li>
+       <li>
+         <a class="external" href="https://commons.wikimedia.org/wiki/File:Baker_Street_Westbound_Circle_and_Hammersmith_%26_City_Looking_West.jpg">Baker Street Westbound Circle and Hammersmith & City Looking West</a>,
+         <a class="external" href="https://creativecommons.org/licenses/by-sa/2.0/deed.en">Creative Commons Attribution-Share Alike 2.0 Generic</a>,
+         by <a class="external" href="http://www.flickr.com/people/52670735@N06">Joshua Brown</a>
+       </li>
+       <li>
+         <a class="external" href="https://commons.wikimedia.org/wiki/File:Ministry_of_Information_First_World_War_Official_Collection_Q30711.jpg">Ministry of Information First World War Official Collection Q30711</a>,
+         public domain
+       </li>
+       <li>
+         <a class="external" href="https://commons.wikimedia.org/wiki/File:SuplacMS_(7).JPG">SuplacMS (7).JPG</a>,
+         <a class="external" href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Creative Commons Attribution-Share Alike 3.0 Unported</a>,
+         by <a class="external" href="https://commons.wikimedia.org/wiki/User:%C8%9Aetcu_Mircea_Rare%C8%99">Țetcu Mircea Rareș</a>
+       </li>
+       <li>
+         <a class="external" href="https://commons.wikimedia.org/wiki/File:Schwarze_Pockau_im_Schwarzwassertal.jpg">Schwarze Pockau im Schwarzwassertal.jpg</a>,
+         <a class="external" href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Creative Commons Attribution-Share Alike 3.0 Unported</a>,
+         by HintererGrund
+       </li>
+       <li>
+         <a class="external" href="https://commons.wikimedia.org/wiki/File:Griesheim-Kirche-3a-CTH.JPG">Griesheim-Kirche-3a-CTH</a>,
+         <a class="external" href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Creative Commons Attribution-Share Alike 3.0 Unported</a>,
+         by <a class="external" href="https://commons.wikimedia.org/wiki/User:CTHOE">CTHOE</a>
+       </li>
+       <li>
+         <a class="external" href="https://commons.wikimedia.org/wiki/File:Ministry_of_Information_First_World_War_Official_Collection_Q30711.jpg">Ministry_of_Information_First_World_War_Official_Collection_Q30711.jpg</a>,
+         <a class="external" href="https://creativecommons.org/licenses/by-sa/2.0/deed.en">Creative Commons Attribution-Share Alike 2.0 Generic</a>,
+         by <a class="external" href="https://commons.wikimedia.org/wiki/User:AnemoneProjectors">AnemoneProjectors</a>
+       </li>
+     </ul>
+  </body>
+</html>

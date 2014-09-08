@@ -1,0 +1,5 @@
+<module rename-to='LazyLoad'>
+  <inherits name='gwtquery.plugins.lazyload.LazyLoad'/>
+  <entry-point class='gwtquery.plugins.lazyload.client.LazyLoadSample'/>
+  <add-linker name="xsiframe"/>
+</module>
